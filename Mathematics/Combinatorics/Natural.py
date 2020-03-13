@@ -1,5 +1,5 @@
 """
-    Implementation of combinatorics popular notations
+    Implementation of combinatorics popular notations in natural numbers
 """
 
 # For memoization with 0! = 1 , 1! = 1
@@ -7,7 +7,7 @@ FACTORIALS = {0: 1, 1: 1}
 
 
 # TODO add decorators for checking input ranges
-def C(n: int, r: int):
+def C(n, r):
     """
         Implements combinations where n and r are natural numbers and n>=r
         Where it finds the number of ways you could make r sized subsets from a set of n elements
@@ -24,7 +24,7 @@ def C(n: int, r: int):
 
 
 # TODO add decorators for checking input ranges
-def P(n: int, r: int):
+def P(n, r):
     """
         Implements permutations where n and r are natural numbers and n >= r
         Where it finds the number of ways you could put r distinct ordered elements from n list of elements
@@ -40,19 +40,21 @@ def P(n: int, r: int):
     res = 1
 
     # If a nearer value exists then start from there
-    if len(FACTORIALS) - 1 > n - r:
+    if len(FACTORIALS) - 1 >= n - r + 1:
         res = FACTORIALS[len(FACTORIALS) - 1] / FACTORIALS[n - r]
-        r = n - len(FACTORIALS) + 1
-
+        r = len(FACTORIALS) - 1
+    else:
+        r = n - r + 1
     # Compute the rest
     while r <= n:
         res *= r
+        r += 1
 
     return res
 
 
 # TODO add decorators for input checking
-def fact(n: int):
+def fact(n):
     """
         Implements factorial for natural numbers
     """
