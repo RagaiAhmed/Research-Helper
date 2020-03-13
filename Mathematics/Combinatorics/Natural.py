@@ -5,6 +5,7 @@
 # For memoization with 0! = 1 , 1! = 1
 FACTORIALS = {0: 1, 1: 1}
 
+#TODO EXPAND TO NON NATURAL
 
 # TODO add decorators for checking input ranges
 def C(n, r):
